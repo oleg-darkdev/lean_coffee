@@ -1,10 +1,11 @@
 <script>
-  import { themeTimeSetting, allTimeSetting, shtormingTimeSetting, groomingTimeSetting, voitingTimeSetting, speakingTimeSetting, themesCount } from '../data/store.js';
+  import { themeTimeSetting, allTimeSetting, shtormingTimeSetting, groomingTimeSetting, voitingTimeSetting, speakingTimeSetting, themesCount } from '../../data/store.js';
   import { ButtonGroup, Button } from 'flowbite-svelte';
-  import Range from './PlanningPhase/Range.svelte';
-  import Steps from './PlanningPhase/Steps.svelte';
-  import ReportList from './PlanningPhase/ReportList.svelte';
-  
+  import Range from './Range.svelte';
+  import Steps from './Steps.svelte';
+  import ReportList from './ReportList.svelte';
+  import ScreenCard from '../ScreenCard.svelte';
+
   let maxSettings = [
     120, // allTime
     15, // shtorming
@@ -60,11 +61,12 @@
     themeTimeSetting.set(defaultTimeForEvent[5]);
     themesCount.set(speakingTimeSetting / themeTimeSetting);
    };
+
+
+   export let appScreen;
 </script>
 
-<div class=" bg-current text-gray-500  rounded-lg  shadow-md flex max-w-sm flex-col">
-  <img class="rounded-t-lg" src="/images/main.png" alt=""> 
-  <div class="p-4 sm:p-6">
+<ScreenCard bgClass="bg-darkFuchsia " title="Инструкция для подготовки" img="/images/config.png">
     <h3 class="mb-2 text-2xl font-bold tracking-tight text-gray-100 dark:text-white">
       Планируемое расписание встречи
     </h3>
@@ -91,12 +93,8 @@
         <ReportList bind:showReport bind:step />
             
       <!-- on:click={showShtormingTimer} -->
-          <button type="button"  on:click={() => {
-            location.href='#plaining';
-            // showPlainingPhase();
-          }}  class="w-full freshGreen text-center font-medium focus:ring-4 focus:outline-none inline-flex items-center justify-center px-5 py-2.5 text-sm text-white   focus:ring-green-300   rounded-full">
-            Перейти к генерации тем 
-          </button>
+        <button type="button"  on:click={() => appScreen++}  class="w-full freshGreen text-center font-medium focus:ring-4 focus:outline-none inline-flex items-center justify-center px-5 py-2.5 text-sm text-white   focus:ring-green-300   rounded-full">
+          Перейти к генерации тем 
+        </button>
     {/if}
-  </div>   
-</div>
+</ScreenCard>
