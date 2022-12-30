@@ -105,15 +105,14 @@ const showVoitingTimer = () => {
 <!-- {/if} -->
 </section>
 
-<!-- 
-<p>
-  Исходя из введеных данных займет: {timeForEvent.shtorming}
-  + {timeForEvent.voiting} + {timeForEvent.speaking} = {timeForEvent.shtorming + timeForEvent.voiting + timeForEvent.speaking}
-  минут, а планировалось {timeForEvent.allTime}
-</p>
 
-Тем которые успеете обсудить: {themesCount}
-<button on:click={showShtormingTimer}> Перейти к генерации тем </button>
+<section class="w-full h-auto lg:pb-12 md:pb-12 pb-12 flex justify-center flex flex-col">
+<!-- {#if contentAppTimers.plainingContentVisible} -->
+	<!-- <PlainingPhase /> -->
+<!-- {/if} -->
+</section>
+<!-- 
+
 {/if}
 
 {#if contentAppTimers.shtormingContentVisible}
