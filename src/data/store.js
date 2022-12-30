@@ -1,5 +1,6 @@
 import { writable } from 'svelte/store';
 
+// planning stage
 export const themeTimeSetting = writable(0),
 	allTimeSetting = writable(0),
 	shtormingTimeSetting = writable(0),
