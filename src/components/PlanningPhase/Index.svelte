@@ -66,35 +66,22 @@
    export let appScreen;
 </script>
 
-<ScreenCard bgClass="bg-darkFuchsia " title="Инструкция для подготовки" img="/images/config.png">
-    <h3 class="mb-2 text-2xl font-bold tracking-tight text-gray-100 dark:text-white">
-      Планируемое расписание встречи
-    </h3>
-    {#if step != instructionLength}
-      <Steps bind:step bind:instructionLength/>
-      <Range bind:defaultTimeForEvent={defaultTimeForEvent[step]} minMin={minSettings[step]} maxMin={maxSettings[step]} stepSetting={stepsSettings[step]}/>
-      
-      <div class="w-full justify-center flex  ">
-        <ButtonGroup class="space-x-px">
-          {#if step != 0}
-            <Button on:click={() => step--} pill  color="alternative">back </Button>
-          {/if}
-          <Button on:click={() => step++} pill  class="bg-freshGreen border-freshGreen">next <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg></Button>
-        </ButtonGroup>
-      </div>
-    {:else if showReport == false}
-      <p class="mb-3 font-normal text-gray-100 leading-tight">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-      </p>
-      <button type="button" on:click={() => report()}  class=" freshGreen text-center font-medium focus:ring-4 focus:outline-none inline-flex items-center justify-center px-5 py-2.5 text-sm text-white   focus:ring-green-300   rounded-full">
-        Показать отчёт
-      </button>
-    {:else}
-        <ReportList bind:showReport bind:step />
-            
-      <!-- on:click={showShtormingTimer} -->
-        <button type="button"  on:click={() => appScreen++}  class="w-full freshGreen text-center font-medium focus:ring-4 focus:outline-none inline-flex items-center justify-center px-5 py-2.5 text-sm text-white   focus:ring-green-300   rounded-full">
-          Перейти к генерации тем 
+<ScreenCard bind:step bind:appScreen length={instructionLength} title="Планирование встречи" btnText="Перейти к генерации тем" bgClass="bg-darkFuchsia "  img="/images/config.png">
+    <div slot='body'>
+      {#if step != instructionLength}
+        <Steps bind:step bind:instructionLength/>
+        <Range bind:defaultTimeForEvent={defaultTimeForEvent[step]} minMin={minSettings[step]} maxMin={maxSettings[step]} stepSetting={stepsSettings[step]}/>
+      {:else}
+        <p class="mb-3 font-normal text-gray-100 leading-tight">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+        </p>
+        <button type="button" on:click={() => report()}  class=" freshGreen text-center font-medium focus:ring-4 focus:outline-none inline-flex items-center justify-center px-5 py-2.5 text-sm text-white   focus:ring-green-300   rounded-full">
+          Показать отчёт
         </button>
-    {/if}
+
+          {#if showReport == false}
+            <ReportList bind:showReport bind:step />
+          {/if}
+      {/if}
+    </div>
 </ScreenCard>

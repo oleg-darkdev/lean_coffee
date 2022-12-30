@@ -1,5 +1,5 @@
 <script>
-  import { ButtonGroup, Button } from 'flowbite-svelte';
+  
 // import { Timeline, TimelineItem } from 'flowbite-svelte';
   import ScreenCard from './ScreenCard.svelte';
 
@@ -46,31 +46,20 @@
 </script>
 
  <!-- добавить таймлайн -->
-<ScreenCard bgClass="bg-current" title="Инструкция для подготовки" img="/images/main.png">
+<ScreenCard bind:step bind:appScreen btnText="Перейти к планированию" length={instruction.length} bgClass="bg-current" title="Инструкция для подготовки" img="/images/main.png">
+  <div slot='body'>
     {#if step != instruction.length }
-    {#each instruction[step] as instruction}
-      <p class="mb-3 font-normal text-gray-100 leading-tight">
-          {instruction}
-      </p>
-    {/each}
-  
-  <div class="w-full justify-center flex  ">
-  <ButtonGroup class="space-x-px">
-    {#if step != 0}
-      <Button on:click={() => step--} pill  color="alternative">back</Button>
-    {/if}
-    <Button on:click={() => step++} pill  class="bg-freshGreen border-freshGreen">next <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg></Button>
-  </ButtonGroup>
-  </div>
+      {#each instruction[step] as instruction}
+        <p class="mb-3 font-normal text-gray-100 leading-tight">
+            {instruction}
+        </p>
+      {/each}
   {:else}
-  <p class="mb-3 font-normal text-gray-100 leading-tight">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-  </p>
-
-    <button type="button" on:click={() => appScreen++}  class=" freshGreen text-center font-medium focus:ring-4 focus:outline-none inline-flex items-center justify-center px-5 py-2.5 text-sm text-white   focus:ring-green-300   rounded-full">
-      Перейти к планированию
-    </button>
+    <p class="mb-3 font-normal text-gray-100 leading-tight">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    </p>
    {/if}
+   </div>
 </ScreenCard>
 
  
