@@ -10,7 +10,7 @@
 </script>
  
  
-<section class="w-full lg:pb-12 md:pb-12 pb-12 flex justify-center">
+<section class="w-full pt-12 pb-12 flex justify-center">
   {#if appScreen == 0} 
 	<button on:click={() => appScreen++}> lean coffee</button>
 	{:else if appScreen == 1}
@@ -44,7 +44,7 @@
 {/if} -->
 
 <style>
-  section {
-  height: 100vh;
-}
+	section {
+	min-height: 100vh;
+	}
 </style>
