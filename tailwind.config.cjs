@@ -7,7 +7,8 @@ const config = {
 		colors: {
 			dark: '#12100B',
 			current: '#f39041',
-                        freshGreen: '#44ac34'
+                        freshGreen: '#44ac34',
+                        darkFuchsia: '#993399'
 
 		},
 		extend: {}
