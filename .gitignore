@@ -2,11 +2,9 @@
 node_modules
 /build
 /.svelte-kit
-/production
+/coverage
 /package
 .env
 .env.*
 !.env.example
-.vercel
-.output
-/freepik
+yarn-error.log

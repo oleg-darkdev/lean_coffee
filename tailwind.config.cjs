@@ -1,21 +1,30 @@
-const config = {
-	content: [
-		'./src/**/*.{html,js,svelte,ts}',
-		'./node_modules/flowbite-svelte/**/*.{html,js,svelte,ts}'
-	],
+module.exports = {
+	content: ['./src/**/*.{html,js,svelte,ts}'],
 	theme: {
-		colors: {
-			dark: '#12100B',
-			current: '#f39041',
-                        freshGreen: '#44ac34',
-                        darkFuchsia: '#993399'
-
-		},
-		extend: {}
+		extends: {},
+		fontFamily: {
+			inter: ['inter', 'sans-serif'],
+			poppins: ['poppins', 'serif'],
+			'fira-mono': ['fira-mono']
+		}
 	},
+	plugins: [require('@tailwindcss/typography'), require('daisyui')],
+	// daisyUI config (optional)
+	daisyui: {
+		themes: [
+			{
+				mytheme: {
+					primary: '#661AE6',
+					secondary: '#D926AA',
+					accent: '#1FB2A5',
+					neutral: '#191D24',
+					info: '#3ABFF8',
+					success: '#36D399',
+					warning: '#FBBD23',
+					error: '#F87272',
 
-	plugins: [require('flowbite/plugin')],
-	darkMode: 'class'
+				}
+			}
+		]
+	}
 };
-
-module.exports = config;
